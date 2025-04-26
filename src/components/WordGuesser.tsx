@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { getRandomWord, checkGuess } from '../utils/wordUtils';
 import WordLengthSelector from './WordLengthSelector';
@@ -20,12 +19,17 @@ const WordGuesser = () => {
   }, [wordLength]);
 
   const startNewGame = (length: number) => {
+    console.log("Starting new game with length:", length);
     const newWord = getRandomWord(length);
+    console.log("Target word:", newWord);
     setTargetWord(newWord);
     setGuesses([]);
     setCurrentGuess('');
     setGameOver(false);
     setUsedLetters({});
+    
+    // Set the word length state
+    setWordLength(length);
   };
 
   const handleKeyPress = (key: string) => {
